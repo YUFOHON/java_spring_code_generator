@@ -40,7 +40,7 @@ public class BuildMapper {
             bw.newLine();
 
             //类的注释
-            BuildComment.createClassComment(bw,tableInfo.getComment()+"对应的mapper类");
+            BuildComment.createClassComment(bw,tableInfo.getComment()+"corresponding mapper class");
             bw.newLine();
             //创建类
             bw.write("@Mapper");
@@ -69,19 +69,19 @@ public class BuildMapper {
                     }
                 }
                 //构建查询方法
-                BuildComment.createFieldComment(bw,"根据"+methodName+"查询");
+                BuildComment.createFieldComment(bw,"base on "+methodName+" query");
                 bw.write("\t T selectBy"+methodName.toString()+"("+methodParams+");");
                 bw.newLine();
                 bw.newLine();
 
                 //构建更新方法
-                BuildComment.createFieldComment(bw,"根据"+methodName+"更新");
+                BuildComment.createFieldComment(bw,"base on "+methodName+" update");
                 bw.write("\t Integer updateBy"+methodName+"(@Param(\"bean\") T t, "+methodParams+");");
                 bw.newLine();
                 bw.newLine();
 
                 //构建删除方法
-                BuildComment.createFieldComment(bw,"根据"+methodName+"删除");
+                BuildComment.createFieldComment(bw,"base on "+methodName+" delete");
                 bw.write("\t Integer deleteBy"+methodName.toString()+"("+methodParams+");");
                 bw.newLine();
                 bw.newLine();

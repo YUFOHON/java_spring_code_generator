@@ -51,36 +51,36 @@ public class BuildService {
             bw.write("public interface "+className+"{");
             bw.newLine();
             bw.newLine();
-            BuildComment.createFieldComment(bw,"根据条件查询列表");
-            bw.write("    List<"+tableInfo.getBeanName()+">findListByParam("+tableInfo.getBeanParamName()+" query);");
+            BuildComment.createFieldComment(bw,"Query list based on conditions");
+            bw.write(" List<"+tableInfo.getBeanName()+">findListByParam("+tableInfo.getBeanParamName()+" query);");
             bw.newLine();
             bw.newLine();
 
-            BuildComment.createFieldComment(bw,"根据条件查询数量");
-            bw.write("    Integer findCountByParam("+tableInfo.getBeanParamName()+" query);");
+            BuildComment.createFieldComment(bw,"Query quantity based on conditions");
+            bw.write(" Integer findCountByParam("+tableInfo.getBeanParamName()+" query);");
             bw.newLine();
             bw.newLine();
 
-            BuildComment.createFieldComment(bw,"分页查询");
-            bw.write("    PaginationResultVO<"+tableInfo.getBeanName()+"> findListByPage("+tableInfo.getBeanParamName()+" query );");
+            BuildComment.createFieldComment(bw,"Paging query");
+            bw.write(" PaginationResultVO<"+tableInfo.getBeanName()+"> findListByPage("+tableInfo.getBeanParamName()+" query );");
             bw.newLine();
             bw.newLine();
 
-            BuildComment.createFieldComment(bw,"新增");
-            bw.write("    Integer add("+ tableInfo.getBeanName()+" bean);");
+            BuildComment.createFieldComment(bw,"new");
+            bw.write(" Integer add("+ tableInfo.getBeanName()+" bean);");
             bw.newLine();
 
-            BuildComment.createFieldComment(bw,"批量新增");
-            bw.write("    Integer addBatch(List<"+tableInfo.getBeanName()+"> listBean);");
+            BuildComment.createFieldComment(bw,"Batch Add");
+            bw.write(" Integer addBatch(List<"+tableInfo.getBeanName()+"> listBean);");
             bw.newLine();
 
-            BuildComment.createFieldComment(bw,"新增或修改");
-            bw.write("    Integer addOrUpdate("+ tableInfo.getBeanName()+" bean);");
+            BuildComment.createFieldComment(bw,"Add or modify");
+            bw.write(" Integer addOrUpdate("+ tableInfo.getBeanName()+" bean);");
             bw.newLine();
 
 
-            BuildComment.createFieldComment(bw,"批量新增或修改");
-            bw.write("    Integer addOrUpdateBatch(List<"+tableInfo.getBeanName()+"> listBean);");
+            BuildComment.createFieldComment(bw,"Batch addition or modification");
+            bw.write(" Integer addOrUpdateBatch(List<"+tableInfo.getBeanName()+"> listBean);");
             bw.newLine();
 
             Map<String, List<FieldInfo>> keyIndexMap = tableInfo.getKeyIndexMap();
@@ -103,19 +103,19 @@ public class BuildService {
                     }
                 }
                 //构建查询方法
-                BuildComment.createFieldComment(bw,"根据"+methodName+"查询");
+                BuildComment.createFieldComment(bw,"base on "+methodName+" query");
                 bw.write("\t "+tableInfo.getBeanName()+" getBy"+methodName.toString()+"("+methodParams+");");
                 bw.newLine();
                 bw.newLine();
 
                 //构建更新方法
-                BuildComment.createFieldComment(bw,"根据"+methodName+"更新");
+                BuildComment.createFieldComment(bw,"base on "+methodName+" update");
                 bw.write("\t Integer updateBy"+methodName+"("+tableInfo.getBeanName()+" bean , "+methodParams+");");
                 bw.newLine();
                 bw.newLine();
 
                 //构建删除方法
-                BuildComment.createFieldComment(bw,"根据"+methodName+"删除");
+                BuildComment.createFieldComment(bw,"base on "+methodName+" deleted");
                 bw.write("\t Integer deleteBy"+methodName.toString()+"("+methodParams+");");
                 bw.newLine();
                 bw.newLine();

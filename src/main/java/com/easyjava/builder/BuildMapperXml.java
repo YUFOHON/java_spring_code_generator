@@ -99,7 +99,7 @@ public class BuildMapperXml {
                 }
             }
             bw.newLine();
-            bw.write("    <!-- 根据\"" + methodName + "\"查询-->");
+            bw.write("    <!-- base on \"" + methodName + "\" query-->");
             bw.newLine();
             bw.write("    <select id=\"selectBy" + methodName + "\" resultMap=\"base_result_map\">");
             bw.newLine();
@@ -109,7 +109,7 @@ public class BuildMapperXml {
             bw.write("    </select>");
             //构建更新方法
             bw.newLine();
-            bw.write("    <!-- 根据\"" + methodName + "\"更新-->");
+            bw.write("    <!-- base on \"" + methodName + "\" update -->");
             bw.newLine();
             bw.write("    <update id=\"updateBy" + methodName + "\" parameterType=\""+ poClass + "\">");
             bw.newLine();
@@ -138,7 +138,7 @@ public class BuildMapperXml {
 
 //                构建删除方法
             bw.newLine();
-            bw.write("    <!-- 根据\"" + methodName + "\"删除-->");
+            bw.write("    <!-- base on \"" + methodName + "\"delete -->");
             bw.newLine();
             bw.write("    <delete id=\"deleteBy" + methodName + "\">");
             bw.newLine();
@@ -167,7 +167,7 @@ public class BuildMapperXml {
 
     private static void buildInsertOrUpdateBatch(TableInfo tableInfo, String poClass, BufferedWriter bw) throws IOException {
         bw.newLine();
-        bw.write("    <!--批量插入或更新 -->");
+        bw.write("    <!--batch update or insert -->");
         bw.newLine();
         bw.write("    <insert id=\"insertOrUpdateBatch\" parameterType=\"" + poClass + "\">");
         bw.newLine();
@@ -187,7 +187,7 @@ public class BuildMapperXml {
     }
 
     private static void buildInsertBatch(TableInfo tableInfo, String poClass, BufferedWriter bw) throws IOException {
-        bw.write("    <!--添加(批量插入)-->");
+        bw.write("    <!--insert (batch insert or update) -->");
         bw.newLine();
         bw.write("    <insert id=\"insertBatch\" parameterType=\"" + poClass + "\">");
         bw.newLine();
@@ -257,7 +257,7 @@ public class BuildMapperXml {
     }
 
     private static void buildInsertOrUpdate(TableInfo tableInfo, String poClass, Map<String, List<FieldInfo>> keyIndexMap, BufferedWriter bw) throws Exception {
-        bw.write("    <!--插入或者更新(匹配有值的字段)-->");
+        bw.write("    <!--Insert or update (match fields with values)-->");
         bw.newLine();
         bw.write("\t<insert id=\"insertOrUpdate\"  parameterType=\"" + poClass + "\">");
         buildInsertSamePart(bw, tableInfo);
@@ -292,7 +292,7 @@ public class BuildMapperXml {
     }
 
     private static void buildInsertOne(TableInfo tableInfo, String poClass, BufferedWriter bw) throws Exception {
-        bw.write("    <!--插入(匹配有值的字段)-->");
+        bw.write("    <!--Insert (match fields with values)-->");
         bw.newLine();
         bw.write("\t<insert id=\"insert\"  parameterType=\"" + poClass + "\">");
 
@@ -317,7 +317,7 @@ public class BuildMapperXml {
     }
 
     private static void buildSelectCount(TableInfo tableInfo, BufferedWriter bw) throws IOException {
-        bw.write("    <!--查询数量-->");
+        bw.write("    <!--Query quantity-->");
         bw.newLine();
         bw.write("\t<select id=\"selectCount\"  resultType=\"java.lang.Integer\">");
         bw.newLine();
@@ -328,7 +328,7 @@ public class BuildMapperXml {
     }
 
     private static void buildSelectList(TableInfo tableInfo, BufferedWriter bw) throws IOException {
-        bw.write("    <!--查询列表-->");
+        bw.write("    <!--query list-->");
         bw.newLine();
         bw.write("\t<select id=\"selectList\"  resultMap=\"base_result_map\">");
         bw.newLine();
@@ -344,7 +344,7 @@ public class BuildMapperXml {
     }
 
     private static void buildCommonSelectCondition(BufferedWriter bw) throws IOException {
-        bw.write("    <!--通用查询条件-->");
+        bw.write("    <!--General query conditions-->");
         bw.newLine();
         bw.write("    <sql id=\"" + QUERY_CONDITION + "\">");
         bw.newLine();
@@ -361,7 +361,7 @@ public class BuildMapperXml {
     }
 
     private static void buildExtendSelectCondition(TableInfo tableInfo, BufferedWriter bw) throws IOException {
-        bw.write("    <!--扩展查询条件-->");
+        bw.write("    <!--Extended query conditions-->");
         bw.newLine();
         bw.write("    <sql id=\"" + BASE_QUERY_CONDITION_EXTEND + "\">");
         bw.newLine();
@@ -389,7 +389,7 @@ public class BuildMapperXml {
     }
 
     private static void buildBaseSelectCondition(TableInfo tableInfo, BufferedWriter bw) throws IOException {
-        bw.write("    <!--基础查询条件-->");
+        bw.write("    <!--Basic query conditions-->");
         bw.newLine();
         bw.write("    <sql id=\"" + BASE_QUERY_CONDITION + "\">");
         bw.newLine();
@@ -412,7 +412,7 @@ public class BuildMapperXml {
 
     private static void buildCommonSelectCol(TableInfo tableInfo, BufferedWriter bw) throws IOException {
 
-        bw.write("    <!--通用查询结果列-->");
+        bw.write("    <!--General query result column-->");
         bw.newLine();
         bw.write("    <sql id=\"" + BASE_COLUMN_LIST + "\">");
         bw.newLine();
@@ -429,7 +429,7 @@ public class BuildMapperXml {
     }
 
     private static void buildResultMap(TableInfo tableInfo, String poClass, FieldInfo idField, BufferedWriter bw) throws IOException {
-        bw.write("    <!--实体映射-->");
+        bw.write("    <!--Entity mapping-->");
         bw.newLine();
         bw.write("    <resultMap id=\"base_result_map\" type=\"" + poClass + "\">");
 

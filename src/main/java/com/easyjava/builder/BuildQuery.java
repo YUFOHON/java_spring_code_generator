@@ -47,7 +47,7 @@ public class BuildQuery {
 
 
             //类的注释
-            BuildComment.createClassComment(bw, tableInfo.getComment() + "查询对象");
+            BuildComment.createClassComment(bw, tableInfo.getComment() + " query class");
             bw.newLine();
             //创建类
             bw.write("public class " + className + " extends BaseQuery{");
@@ -82,7 +82,7 @@ public class BuildQuery {
             bw.write("}");
             bw.flush();
         } catch (Exception e) {
-            logger.error("创建po失败", e);
+            logger.error("create po fail", e);
         } finally {
             BuildMapperXml.closeAll(out, outw, bw, logger);
         }

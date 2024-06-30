@@ -38,16 +38,16 @@ public class BuildServiceImpl {
             //import 需要的包名
             ImportNeedPackge(tableInfo, interfaceName, bw, mapperName);
             //类的注释
-            BuildComment.createClassComment(bw,tableInfo.getComment()+"对应的ServiceImpl");
+            BuildComment.createClassComment(bw,tableInfo.getComment()+" correspond ServiceImpl");
             //注解
             BuildAnnotation(interfaceName, bw);
             //导入mapper
             imprtMapper(tableInfo, bw, mapperName);
 
             //构建方法
-            //根据条件查询列表
+            //base on 条件查询列表
             selectByParam(tableInfo, bw, mapperBeanName);
-            //根据条件查询数量
+            //base on 条件查询数量
             selectCountByParam(tableInfo, bw, mapperBeanName);
             //分页查询
             selectByPage(tableInfo, bw);
@@ -97,7 +97,7 @@ public class BuildServiceImpl {
                 }
             }
             //构建查询方法
-            BuildComment.createFieldComment(bw,"根据"+methodName+"查询");
+            BuildComment.createFieldComment(bw,"base on "+methodName+" query");
             bw.write("    @Override");
             bw.newLine();
             bw.write("\t public "+ tableInfo.getBeanName()+" getBy"+methodName.toString()+"("+methodParams+"){");
@@ -107,8 +107,8 @@ public class BuildServiceImpl {
             bw.write("\t }");
             bw.newLine();
 
-            //构建更新方法
-            BuildComment.createFieldComment(bw,"根据"+methodName+"更新");
+            //构建update 方法
+            BuildComment.createFieldComment(bw,"base on "+methodName+"update ");
             bw.write("    @Override");
             bw.newLine();
             bw.write("\t public Integer updateBy"+methodName+"("+ tableInfo.getBeanName()+" bean , "+methodParams+"){");
@@ -119,7 +119,7 @@ public class BuildServiceImpl {
             bw.newLine();
 
             //构建删除方法
-            BuildComment.createFieldComment(bw,"根据"+methodName+"删除");
+            BuildComment.createFieldComment(bw,"base on "+methodName+" delete");
             bw.write("    @Override");
             bw.newLine();
             bw.write("\t public Integer deleteBy"+methodName.toString()+"("+methodParams+"){");
@@ -132,7 +132,7 @@ public class BuildServiceImpl {
     }
 
     private static void insertOrUpdateBatch(TableInfo tableInfo, BufferedWriter bw, String mapperBeanName) throws Exception {
-        BuildComment.createFieldComment(bw,"批量新增或修改");
+        BuildComment.createFieldComment(bw,"Add or modify in batches");
         bw.write("    @Override");
         bw.newLine();
         bw.write("    public Integer addOrUpdateBatch(List<"+ tableInfo.getBeanName()+"> listBean){");
@@ -147,7 +147,7 @@ public class BuildServiceImpl {
     }
 
     private static void insertOne (TableInfo tableInfo, BufferedWriter bw, String mapperBeanName) throws Exception {
-        BuildComment.createFieldComment(bw,"新增");
+        BuildComment.createFieldComment(bw,"insert");
         bw.write("    @Override");
         bw.newLine();
         bw.write("    public Integer add("+ tableInfo.getBeanName()+" bean){");
@@ -159,7 +159,7 @@ public class BuildServiceImpl {
     }
 
     private static void insertOrUpdateOne (TableInfo tableInfo, BufferedWriter bw, String mapperBeanName) throws Exception {
-        BuildComment.createFieldComment(bw,"新增或者修改");
+        BuildComment.createFieldComment(bw,"insert or update");
         bw.write("    @Override");
         bw.newLine();
         bw.write("    public Integer addOrUpdate("+ tableInfo.getBeanName()+" bean){");
@@ -171,7 +171,7 @@ public class BuildServiceImpl {
     }
 
     private static void insertBatch(TableInfo tableInfo, BufferedWriter bw, String mapperBeanName) throws Exception {
-        BuildComment.createFieldComment(bw,"批量新增");
+        BuildComment.createFieldComment(bw,"batch insert");
         bw.write("    @Override");
         bw.newLine();
         bw.write("    public Integer addBatch(List<"+ tableInfo.getBeanName()+"> listBean){");
@@ -187,7 +187,7 @@ public class BuildServiceImpl {
     }
 
     private static void selectByPage(TableInfo tableInfo, BufferedWriter bw) throws Exception {
-        BuildComment.createFieldComment(bw,"分页查询");
+        BuildComment.createFieldComment(bw,"paging query");
         bw.write("    @Override");
         bw.newLine();
         bw.write("    public PaginationResultVO<"+ tableInfo.getBeanName()+"> findListByPage("+ tableInfo.getBeanParamName()+" query ){");
@@ -211,7 +211,7 @@ public class BuildServiceImpl {
     }
 
     private static void selectCountByParam(TableInfo tableInfo, BufferedWriter bw, String mapperBeanName) throws Exception {
-        BuildComment.createFieldComment(bw,"根据条件查询数量");
+        BuildComment.createFieldComment(bw,"base on Condition query quantity");
         bw.write("    @Override");
         bw.newLine();
         bw.write("    public Integer findCountByParam("+ tableInfo.getBeanParamName()+" query){");
@@ -223,7 +223,7 @@ public class BuildServiceImpl {
     }
 
     private static void selectByParam(TableInfo tableInfo, BufferedWriter bw, String mapperBeanName) throws Exception {
-        BuildComment.createFieldComment(bw,"根据条件查询列表");
+        BuildComment.createFieldComment(bw,"base on Condition query list");
         bw.write("    @Override");
         bw.newLine();
         bw.write("    public List<"+ tableInfo.getBeanName()+">findListByParam("+ tableInfo.getBeanParamName()+" query){");

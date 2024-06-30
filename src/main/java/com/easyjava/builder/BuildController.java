@@ -50,7 +50,7 @@ public class BuildController {
 
 
             //构建方法
-            BuildComment.createFieldComment(bw,"根据条件分页查询");
+            BuildComment.createFieldComment(bw,"base on condition paging query");
             bw.write("    @RequestMapping(\"loadDataList\")");
             bw.newLine();
             bw.write("    public ResponseVO loadDataList("+tableInfo.getBeanParamName()+" query) {");
@@ -104,7 +104,7 @@ public class BuildController {
                 }
             }
             //构建查询方法
-            BuildComment.createFieldComment(bw,"根据"+methodName+"查询");
+            BuildComment.createFieldComment(bw,"base on "+methodName+" query");
             bw.write("    @RequestMapping(\""+"get"+tableInfo.getBeanName()+"By"+methodName+"\")");
             bw.newLine();
             bw.write("\t public ResponseVO get"+ tableInfo.getBeanName()+"By"+methodName.toString()+"("+methodParams+"){");
@@ -115,7 +115,7 @@ public class BuildController {
             bw.newLine();
 
             //构建更新方法
-            BuildComment.createFieldComment(bw,"根据"+methodName+"更新");
+            BuildComment.createFieldComment(bw,"base on "+methodName+" update");
             bw.write("    @RequestMapping(\""+"update"+tableInfo.getBeanName()+"By"+methodName+"\")");
             bw.newLine();
             bw.write("\t public ResponseVO update"+ tableInfo.getBeanName()+"By"+methodName+"("+tableInfo.getBeanName()+" bean,"+methodParams+"){");
@@ -126,7 +126,7 @@ public class BuildController {
             bw.newLine();
 
             //构建删除方法
-            BuildComment.createFieldComment(bw,"根据"+methodName+"删除");
+            BuildComment.createFieldComment(bw,"base on "+methodName+" delete");
             bw.write("    @RequestMapping(\""+"delete"+tableInfo.getBeanName()+"By"+methodName+"\")");
             bw.newLine();
             bw.write("\t public ResponseVO delete"+ tableInfo.getBeanName()+"By"+methodName.toString()+"("+methodParams+"){");
@@ -139,7 +139,7 @@ public class BuildController {
     }
 
     private static void insertOrUpdateBatch(TableInfo tableInfo, BufferedWriter bw, String serviceBeanName) throws Exception {
-        BuildComment.createFieldComment(bw,"批量新增或修改");
+        BuildComment.createFieldComment(bw,"batch insert or update");
         bw.write("    @RequestMapping(\"addOrUpdateBatch\")");
         bw.newLine();
         bw.write("    public ResponseVO addOrUpdate(@RequestBody List<"+ tableInfo.getBeanName()+"> listBean){");
@@ -151,7 +151,7 @@ public class BuildController {
     }
 
     private static void insertOne (TableInfo tableInfo, BufferedWriter bw, String serviceBeanName) throws Exception {
-        BuildComment.createFieldComment(bw,"新增");
+        BuildComment.createFieldComment(bw,"insert");
         bw.write("    @RequestMapping(\"add\")");
         bw.newLine();
         bw.write("    public ResponseVO add("+ tableInfo.getBeanName()+" bean){");
@@ -163,7 +163,7 @@ public class BuildController {
     }
 
     private static void insertOrUpdateOne (TableInfo tableInfo, BufferedWriter bw, String serviceBeanName) throws Exception {
-        BuildComment.createFieldComment(bw,"新增或者修改");
+        BuildComment.createFieldComment(bw,"insert or update");
         bw.write("    @RequestMapping(\"addOrUpdate\")");
         bw.newLine();
         bw.write("    public ResponseVO addOrUpdate("+ tableInfo.getBeanName()+" bean){");
@@ -175,7 +175,7 @@ public class BuildController {
     }
 
     private static void insertBatch(TableInfo tableInfo, BufferedWriter bw, String serviceBeanName) throws Exception {
-        BuildComment.createFieldComment(bw,"批量新增");
+        BuildComment.createFieldComment(bw,"batch insert");
         bw.write("    @RequestMapping(\"addBatch\")");
         bw.newLine();
         bw.write("    public ResponseVO addBatch(@RequestBody List<"+ tableInfo.getBeanName()+"> listBean){");
@@ -187,7 +187,7 @@ public class BuildController {
     }
 
     private static void selectByPage(TableInfo tableInfo, BufferedWriter bw) throws Exception {
-        BuildComment.createFieldComment(bw,"分页查询");
+        BuildComment.createFieldComment(bw,"Paging query");
         bw.write("    @Override");
         bw.newLine();
         bw.write("    public PaginationResultVO<"+ tableInfo.getBeanName()+"> findListByPage("+ tableInfo.getBeanParamName()+" query ){");
